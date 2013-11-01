@@ -19,7 +19,7 @@
 	font-weight:bolder;
 }
 
-@media screen and (orientation: portrait) {
+/*@media screen and (orientation: portrait) {
  @-ms-viewport {
     width: 320px;
 	height: 534px;
@@ -27,4 +27,4 @@
     max-zoom: 1;
     min-zoom: 1;
  }
-}
+}*/
