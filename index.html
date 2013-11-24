@@ -14,6 +14,96 @@
 
  
 </head> 
+
+
+<body> 
+<!--Splash Screen-->
+	<div data-role="page" id="splash">
+		<div class="splash">
+			<!--<img src="images/recordlogo.png"/>-->
+		</div>
+   	</div>
+
+<!--First Page-->
+    <div data-role="page" id="page">
+        <div data-role="header" data-position="fixed" >
+            <h1>Playlist</h1>            
+        </div>
+        
+        
+       	<div class="ui-grid-b">
+            	<div class="ui-block-a"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">All Tracks</button></div><!--</div>-->
+            
+                <div class="ui-block-b"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Artists</button></div><!--</div>-->
+                
+                <div class="ui-block-c"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Albums</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Albums</button></div><!--</div>-->
+                
+                <!--<div class="ui-block-d"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Genre</span></span><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Genre</button></div></div>-->
+                
+                <!--<div class="ui-block-e">--><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Top 20</span></span>--><!--<button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Top 20</button></div>--><!--</div>-->
+       	</div>
+        
+        
+        <div data-role="content">
+            <ul id="listview" data-role="listview" data-filter="true">                
+            </ul>		
+        </div>        		
+        
+        <div data-role="popup" id="positionWindow"><p><strong>Track Will Play Shortly</strong></p></div>    
+        
+        <div data-role="footer" data-id="myfooter" >
+            <h4>&copy; SelecTunes</h4>
+        </div>
+    </div>
+    
+<!--Second Page-->    
+    <div data-role="page" id="page2">
+        <div data-role="header">
+            <h1>Filter Playlist</h1>
+        </div>
+        <div data-role="content">	
+            <ul id="filter" data-role="listview">
+            <li id="album"><a>Album</a></li>
+            <li id="artist"><a>Artist</a></li>
+            <li id="genre"><a>Genre</a></li>
+            </ul>	
+        </div>
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div>
+    </div>
+    
+<!--Third Page-->    
+    <div data-role="page" id="page3">
+        <div data-role="header">
+            <h1>Genre's</h1>
+        </div>
+        <div data-role="content">	
+            <ul id="genreview" data-role="listview" data-filter="true">
+                
+            </ul>		
+        </div>
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div>
+    </div>
+
+<!--Fourth Page-->    
+    <div data-role="page" id="page4">
+        <div data-role="header">
+            <h1>Page Four</h1>
+        </div>
+        <div data-role="content">	
+            Content		
+        </div>
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div>
+    </div>
+
+
+</body>
+
 <script type="text/javascript">
 
 
@@ -147,92 +237,4 @@ $(document).ready(function() {
 
     
 </script>
-
-<body> 
-<!--Splash Screen-->
-	<div data-role="page" id="splash">
-		<div class="splash">
-			<!--<img src="images/recordlogo.png"/>-->
-		</div>
-   	</div>
-
-<!--First Page-->
-    <div data-role="page" id="page">
-        <div data-role="header" data-position="fixed" >
-            <h1>Playlist</h1>            
-        </div>
-        
-        
-       	<div class="ui-grid-c">
-            	<div class="ui-block-a"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">All Tracks</button></div><!--</div>-->
-            
-                <div class="ui-block-b"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Artists</button></div><!--</div>-->
-                
-                <div class="ui-block-c"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Albums</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Albums</button></div><!--</div>-->
-                
-                <div class="ui-block-d"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Genre</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Genre</button></div><!--</div>-->
-                
-                <!--<div class="ui-block-e">--><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Top 20</span></span>--><!--<button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Top 20</button></div>--><!--</div>-->
-       	</div>
-        
-        
-        <div data-role="content">
-            <ul id="listview" data-role="listview" data-filter="true">                
-            </ul>		
-        </div>        		
-        
-        <div data-role="popup" id="positionWindow"><p><strong>Track Will Play Shortly</strong></p></div>    
-        
-        <div data-role="footer" data-id="myfooter" >
-            <h4>&copy; SelecTunes</h4>
-        </div>
-    </div>
-    
-<!--Second Page-->    
-    <div data-role="page" id="page2">
-        <div data-role="header">
-            <h1>Filter Playlist</h1>
-        </div>
-        <div data-role="content">	
-            <ul id="filter" data-role="listview">
-            <li id="album"><a>Album</a></li>
-            <li id="artist"><a>Artist</a></li>
-            <li id="genre"><a>Genre</a></li>
-            </ul>	
-        </div>
-        <div data-role="footer">
-            <h4>Page Footer</h4>
-        </div>
-    </div>
-    
-<!--Third Page-->    
-    <div data-role="page" id="page3">
-        <div data-role="header">
-            <h1>Genre's</h1>
-        </div>
-        <div data-role="content">	
-            <ul id="genreview" data-role="listview" data-filter="true">
-                
-            </ul>		
-        </div>
-        <div data-role="footer">
-            <h4>Page Footer</h4>
-        </div>
-    </div>
-
-<!--Fourth Page-->    
-    <div data-role="page" id="page4">
-        <div data-role="header">
-            <h1>Page Four</h1>
-        </div>
-        <div data-role="content">	
-            Content		
-        </div>
-        <div data-role="footer">
-            <h4>Page Footer</h4>
-        </div>
-    </div>
-
-
-</body>
 </html>
