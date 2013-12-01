@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="css/jquery-mobile-1.3.2.css" />
 <link rel="stylesheet" href="css/custom.css" />
-<link rel="stylesheet" href="themes/SelecTunes.css" />
+<!--<link rel="stylesheet" href="themes/SelecTunes.css" />-->
 <script src="scripts/jquery-1.9.1.js"></script>
 <script src="scripts/jquery-mobile-1.3.2.js"></script>
 
@@ -21,48 +21,41 @@
 <!--Splash Screen-->
 	<div data-role="page" id="splash">
 		<div class="splash">
-			<img src="images/recordlogo.png"/>
+			<img src="css/images/recordlogo.png"/>
 		</div>
    	</div>
 
 <!--First Page-->
     <div data-role="page" id="page">
         <div data-role="header" data-position="fixed" >
-        <div align="center">
-     <img src="images/recordlogoTextResize.png" alt="main logo" vspace="2"/>
-</div>
+            <div align="center">
+                <img src="css/images/recordlogoTextResize.png" alt="main logo" vspace="2"/>
+            </div>
         <!--<img src="images/recordlogoText.png" class="ui-btn-right">-->
             <!--<h1>Playlist</h1>-->            
         </div>
         
-        
-       	<div class="ui-grid-b">
-            	<div class="ui-block-a"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">All Tracks</button></div><!--</div>-->
-            
-                <div class="ui-block-b"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><!--<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Artists</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Artists</button></div><!--</div>-->
-                
-                <div class="ui-block-c"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Albums</span></span>--><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Albums</button></div><!--</div>-->
-                
-                <!--<div class="ui-block-d"><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Genre</span></span><button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Genre</button></div></div>-->
-                
-                <!--<div class="ui-block-e">--><!--<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Top 20</span></span>--><!--<button type="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">Top 20</button></div>--><!--</div>-->
-       	</div>
-        
+        <div>
+            <select name="filterList" id="filterList" >
+               <option value="Playlist">All Playlist</option>
+               <option value="Artist">All Artist's</option>
+               <option value="Album">All Album's</option>
+               <option value="Genre">All Genre's</option>
+            </select>
+        </div>
         
         <div data-role="content">
             <ul id="listview" data-role="listview" data-filter="true">                
             </ul>		
         </div>        		
         
-        <div data-role="popup" id="positionWindow"><p><strong>Track Will Play Shortly</strong></p></div>    
-        
-        <div data-role="footer" data-id="myfooter" >
+        <div data-role="footer" data-position="fixed" data-id="myfooter" >
             <h4>&copy; SelecTunes</h4>
         </div>
     </div>
     
 <!--Second Page-->    
-    <div data-role="page" id="page2">
+   <!-- <div data-role="page" id="page2">
         <div data-role="header">
             <h1>Filter Playlist</h1>
         </div>
@@ -76,10 +69,10 @@
         <div data-role="footer">
             <h4>Page Footer</h4>
         </div>
-    </div>
+    </div>-->
     
 <!--Third Page-->    
-    <div data-role="page" id="page3">
+    <!--<div data-role="page" id="page3">
         <div data-role="header">
             <h1>Genre's</h1>
         </div>
@@ -91,10 +84,10 @@
         <div data-role="footer">
             <h4>Page Footer</h4>
         </div>
-    </div>
+    </div>-->
 
 <!--Fourth Page-->    
-    <div data-role="page" id="page4">
+    <!--<div data-role="page" id="page4">
         <div data-role="header">
             <h1>Page Four</h1>
         </div>
@@ -104,7 +97,7 @@
         <div data-role="footer">
             <h4>Page Footer</h4>
         </div>
-    </div>
+    </div>-->
 
 
 </body>
@@ -112,11 +105,13 @@
 <script type="text/javascript">
 
 
-//var apiUrl = 'http://selectunes-test.azurewebsites.net/api/tracks';
-var apiUrl = 'http://localhost:51887/api/Tracks';
+//var apiUrl = 'http://selectunes-test.azurewebsites.net/api/';
+var apiUrl = 'http://localhost:51887/api/';
 var value = 0;
 
 $(document).ready(function() {
+	
+	$.support.cors = true;
 	
 	$(function(){
 		setTimeout(hideSplash,1500);
@@ -126,24 +121,22 @@ $(document).ready(function() {
 		$.mobile.changePage("#page", "fade");
 	}
 	
-	//$("#positionWindow").hide();
-	
 	$(function(){
 		setTimeout(getPlaylist,2000);
 	});
 	
 	function getPlaylist(){
+		
 		$.mobile.loading( 'show', {
 			text: 'Loading Playlist',
 			textVisible: true,
 			theme: 'a',
 			html: ""
 		});
-		
-		//$.mobile.showPageLoadingMsg("a","Loading Playlist");
-		$.support.cors = true;
+				
+		//$.support.cors = true;
 		var a = "a";
-		$.getJSON(apiUrl)
+		$.getJSON(apiUrl + 'tracks')
             .done(function (data) {
 				$.each(data, function (index, track) {
 					trac = {Id : track.Id, Name : track.Name}
@@ -155,15 +148,12 @@ $(document).ready(function() {
 	}
 			
 		//When a track is selected	
-		$("#listview").on('click', 'li', function() {
-            
+		$("#listview").on('click', 'li', function() {            
 		
 		track = {
 			Id: $(this).attr('id'),
-			Name: $(this).text()       
-			    
-        };
-		
+			Name: $(this).text()       			    
+        };		
 			var x = track.Id;
 			var aID = '' + x + 'a';
 			
@@ -172,20 +162,12 @@ $(document).ready(function() {
 		$.support.cors = true;       
         //Post the track id to API
         $.ajax({
-            url: 'http://localhost:51887/api/selecttracks/',
+            url: (apiUrl + 'selecttracks/'),
             type: 'POST',
             data: JSON.stringify('='+track.Id.toString()), 
 			dataType:"json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-				//var z = $(aID).attr('href');
-				//alert(z);
-				//$("#aID").attr("href", "#positionWindow");
-				//$("#aID").click();
-				
-				//alert(aID);
-				
-				//$(document).click();
 				alert("Your Track will play Shortly");
             },
             error: function (data, err) {
@@ -196,50 +178,70 @@ $(document).ready(function() {
 			
 	});
 	
-	//Get filters eg by genre,artist,album
-
-//When genre is selected	
-
-		$("#filter").on('click', 'li', function() {
-		
-		$.mobile.changePage("#page3", "fade");
-		
-		var genreUrl = 'http://localhost:51887/api/genre/';
-		
-		//function getGenrelist(){
-		/*$(function(){
-			setTimeout(getGenrelist,1000);
-		});*/
 	
-		/*function getGenrelist(){
-			$.mobile.loading( 'show', {
-				text: 'Loading Genre List',
-				textVisible: true,
-				theme: 'a',
-				html: ""
-			});*/
+	//Get filters eg by genre,artist,album	
+	
+		$("#filterList").change(function() {
+            		
+		$("#listview").empty();
+		
+		var selection = $("#filterList").val();
+		
+		$.mobile.loading( 'show', {
+			text: 'Loading ' + selection + 's',
+			textVisible: true,
+			theme: 'a',
+			html: ""
+		});		
+		
+		if(selection == 'Artist')
+		{		
+			//$.support.cors = true;
+				var a = "a";
+				$.getJSON(apiUrl + 'artist')
+					.done(function (data) {						
+						$.each(data, function (index, artist) {
+							art = {Id : artist.Id, Name : artist.Name, Tracks : artist.TrackCount}							
+							$('<li id=' + art.Id + '><a id=' + art.Id + a + '>' + art.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + art.Tracks + ' Tracks</span></a></li>').appendTo($('#listview'));										
+							$.mobile.hidePageLoadingMsg();
+							$('#listview').listview('refresh');								
+						});    				          
+					});
+		}//end if
+		
+		else if(selection == 'Album')
+		{
+			//$.support.cors = true;
+				var a = "a";
+				$.getJSON(apiUrl + 'album')
+					.done(function (data) {						
+						$.each(data, function (index, album) {
+							alb = {Id : album.Id, Name : album.Name, Tracks : album.TrackCount}							
+							$('<li id=' + alb.Id + '><a id=' + alb.Id + a + '>' + alb.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + alb.Tracks + ' Tracks</span></a></li>').appendTo($('#listview'));										
+							$.mobile.hidePageLoadingMsg();
+							$('#listview').listview('refresh');								
+						});    				          
+					});
+		}//end else if
+		
+		else if(selection == 'Playlist')
+		{
+				//$.support.cors = true;
+			var a = "a";
+			$.getJSON(apiUrl + 'tracks')
+				.done(function (data) {
+					$.each(data, function (index, track) {
+						trac = {Id : track.Id, Name : track.Name}
+						$('<li id=' + trac.Id + '><a id=' + trac.Id + a + '>' + trac.Name + '</a></li>').appendTo($('#listview'));										
+						$.mobile.hidePageLoadingMsg();
+						$('#listview').listview('refresh');								
+					});    				          
+				});
+		}//end else if
+		
+		}); //End of FilterList changed fucntion
 			
-		
-		$.support.cors = true;
-		
-		$.getJSON(genreUrl)
-            .done(function (data) {
-				alert(data);
-				$.each(data, function (index, genre) {
-					gen = {Id : genre.Id, Name : genre.Name};
-					
-                    //$('<li id=' + gen.Id + '><a>' + gen.Name + '</a></li>').appendTo($('#genreview'));										
-					//$.mobile.hidePageLoadingMsg();
-					
-					//$('#genreview').listview('refresh');								
-                });    				          
-			});
-		//}
-		});
-		
-			
-});
-
+});//end document.ready()
     
 </script>
 </html>
