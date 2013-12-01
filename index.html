@@ -114,15 +114,15 @@ $(document).ready(function() {
 	$.support.cors = true;
 	
 	$(function(){
-		setTimeout(hideSplash,1500);
+		setTimeout(hideSplash,2500);
 	});
 	
 	function hideSplash(){
-		$.mobile.changePage("#page", "fade");
+		$.mobile.changePage("#page", "pop");
 	}
 	
 	$(function(){
-		setTimeout(getPlaylist,2000);
+		setTimeout(getPlaylist,2500);
 	});
 	
 	function getPlaylist(){
