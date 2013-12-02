@@ -19,7 +19,7 @@
 @media screen and (orientation: portrait) {
     @-ms-viewport {
        width: 320px;
-	   height: 521px;
+	   height: 480px;
        user-zoom: fixed;
        max-zoom: 1;
        min-zoom: 1;
