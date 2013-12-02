@@ -21,7 +21,7 @@
 <!--Splash Screen-->
 	<div data-role="page" id="splash">
 		<div class="splash">
-			<img src="css/images/recordlogo.png"/>
+			<img src="css/images/recordlogoSmall.png"/>
 		</div>
    	</div>
 
@@ -37,7 +37,7 @@
         
         <div>
             <select name="filterList" id="filterList" >
-               <option value="Playlist">All Playlist</option>
+               <option value="Track">All Track's</option>
                <option value="Artist">All Artist's</option>
                <option value="Album">All Album's</option>
                <option value="Genre">All Genre's</option>
@@ -128,7 +128,7 @@ $(document).ready(function() {
 	function getPlaylist(){
 		
 		$.mobile.loading( 'show', {
-			text: 'Loading Playlist',
+			text: 'Loading All Tracks',
 			textVisible: true,
 			theme: 'a',
 			html: ""
@@ -224,7 +224,7 @@ $(document).ready(function() {
 					});
 		}//end else if
 		
-		else if(selection == 'Playlist')
+		else if(selection == 'Track')
 		{
 				//$.support.cors = true;
 			var a = "a";
