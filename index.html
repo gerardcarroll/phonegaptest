@@ -45,8 +45,11 @@
         </div>
         
         <div data-role="content">
-            <ul id="listview" data-role="listview" data-filter="true">                
-            </ul>		
+            <ul id="listview" data-role="listview" data-filter="true"></ul>
+            <ul id="artistview" data-role="listview" data-filter=""></ul>
+            <ul id="albumview" data-role="listview" data-filter=""></ul>
+            <label id="testid"></label>
+            <label id="testName"></label>
         </div>        		
         
         <div data-role="footer" data-position="fixed" data-id="myfooter" >
@@ -109,6 +112,8 @@
 var apiUrl = 'http://localhost:51887/api/';
 var value = 0;
 
+var ownerid = 5;
+
 $(document).ready(function() {
 	
 	$.support.cors = true;
@@ -136,7 +141,7 @@ $(document).ready(function() {
 				
 		//$.support.cors = true;
 		var a = "a";
-		$.getJSON(apiUrl + 'tracks')
+		$.getJSON(apiUrl + 'trackingtracks/' + ownerid)
             .done(function (data) {
 				$.each(data, function (index, track) {
 					trac = {Id : track.Id, Name : track.Name}
@@ -168,9 +173,11 @@ $(document).ready(function() {
 			dataType:"json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
+				//alert(data);
 				alert("Your Track will play Shortly");
             },
             error: function (data, err) {
+				//alert(data);
 				alert("Failed");
             },
 			
@@ -184,6 +191,8 @@ $(document).ready(function() {
 		$("#filterList").change(function() {
             		
 		$("#listview").empty();
+		$("#artistview").empty();
+		$("#albumview").empty();
 		
 		var selection = $("#filterList").val();
 		
@@ -195,40 +204,40 @@ $(document).ready(function() {
 		});		
 		
 		if(selection == 'Artist')
-		{		
+		{
 			//$.support.cors = true;
-				var a = "a";
-				$.getJSON(apiUrl + 'artist')
-					.done(function (data) {						
-						$.each(data, function (index, artist) {
-							art = {Id : artist.Id, Name : artist.Name, Tracks : artist.TrackCount}							
-							$('<li id=' + art.Id + '><a id=' + art.Id + a + '>' + art.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + art.Tracks + ' Tracks</span></a></li>').appendTo($('#listview'));										
-							$.mobile.hidePageLoadingMsg();
-							$('#listview').listview('refresh');								
-						});    				          
-					});
+			var a = "a";
+			$.getJSON(apiUrl + 'artist/' + ownerid)
+				.done(function (data) {						
+					$.each(data, function (index, artist) {
+						art = {Id : artist.Id, Name : artist.Name, Tracks : artist.TrackCount}							
+						$('<li id=' + art.Id + '><a id=' + art.Id + a + '>' + art.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + art.Tracks + ' Tracks</span></a></li>').appendTo($('#artistview'));										
+						$.mobile.hidePageLoadingMsg();
+						$('#artistview').listview('refresh');								
+					});    				          
+				});
 		}//end if
 		
 		else if(selection == 'Album')
 		{
 			//$.support.cors = true;
-				var a = "a";
-				$.getJSON(apiUrl + 'album')
-					.done(function (data) {						
-						$.each(data, function (index, album) {
-							alb = {Id : album.Id, Name : album.Name, Tracks : album.TrackCount}							
-							$('<li id=' + alb.Id + '><a id=' + alb.Id + a + '>' + alb.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + alb.Tracks + ' Tracks</span></a></li>').appendTo($('#listview'));										
-							$.mobile.hidePageLoadingMsg();
-							$('#listview').listview('refresh');								
-						});    				          
-					});
+			var a = "a";
+			$.getJSON(apiUrl + 'album/' + ownerid)
+				.done(function (data) {						
+					$.each(data, function (index, album) {
+						alb = {Id : album.Id, Name : album.Name, Tracks : album.TrackCount}							
+						$('<li id=' + alb.Id + '><a id=' + alb.Id + a + '>' + alb.Name + '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">' + alb.Tracks + ' Tracks</span></a></li>').appendTo($('#albumview'));										
+						$.mobile.hidePageLoadingMsg();
+						$('#albumview').listview('refresh');								
+					});    				          
+				});
 		}//end else if
 		
 		else if(selection == 'Track')
 		{
-				//$.support.cors = true;
+			//$.support.cors = true;
 			var a = "a";
-			$.getJSON(apiUrl + 'tracks')
+			$.getJSON(apiUrl + 'trackingtracks/' + ownerid)
 				.done(function (data) {
 					$.each(data, function (index, track) {
 						trac = {Id : track.Id, Name : track.Name}
@@ -240,6 +249,70 @@ $(document).ready(function() {
 		}//end else if
 		
 		}); //End of FilterList changed fucntion
+		
+		
+		//When an Artist is selected get the tracks associated with them
+		$("#artistview").on('click', 'li', function() {            
+		
+		$.support.cors = true;
+		
+		$('#artistview').empty();
+		$("#listview").empty();
+		
+		$.mobile.loading( 'show', {
+			text: 'Loading Tracks',
+			textVisible: true,
+			theme: 'a',
+			html: ""
+		});
+		
+		artist = {
+			Id: $(this).attr('id')			     			    
+        };
+		
+		$.getJSON(apiUrl + 'artist?ownerid=' + ownerid + '&artistid=' + artist.Id)
+				.done(function (data) {						
+					$.each(data, function (index, track) {
+						trac = {Id : track.Id, Name : track.Name}						
+						$('<li id=' + trac.Id + '><a id=' + trac.Id +'a>' + trac.Name + '</a></li>').appendTo($('#listview'));										
+						$.mobile.hidePageLoadingMsg();
+						$('#listview').listview('refresh');
+						});    										          
+				});				
+			
+	});//end get artist associated tracks
+	
+	
+	//When an Album is selected get the tracks associated for that album
+		$("#albumview").on('click', 'li', function() {            
+		
+		$.support.cors = true;
+		
+		$('#albumview').empty();
+		$("#listview").empty();
+		
+		$.mobile.loading( 'show', {
+			text: 'Loading Tracks',
+			textVisible: true,
+			theme: 'a',
+			html: ""
+		});
+		
+		album = {
+			Id: $(this).attr('id')			     			    
+        };
+		
+		$.getJSON(apiUrl + 'album?ownerid=' + ownerid + '&albumid=' + album.Id)
+				.done(function (data) {						
+					$.each(data, function (index, track) {
+						trac = {Id : track.Id, Name : track.Name}
+						$('<li id=' + trac.Id + '><a id=' + trac.Id +'a>' + trac.Name + '</a></li>').appendTo($('#listview'));										
+						$.mobile.hidePageLoadingMsg();
+						$('#listview').listview('refresh');
+						});    										          
+				});
+							
+	});//end get artist associated tracks
 			
 });//end document.ready()
     
